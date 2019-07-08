@@ -1,0 +1,383 @@
+[bar/barbottom]
+font-0 = "FontAwesome:size=12.5;3"
+font-1 = "Monospace:size=12.5;3"
+font-2 = "Book:size=12.5;3"
+#monitor = eDP1
+#monitor = HDMI1
+monitor = ${env:MONITOR:}
+bottom = true
+
+module-margin = 3
+separator = |
+padding-left = 0
+padding-right = 3
+height = 26
+
+background = #000000
+foreground = #ffffff
+
+modules-left = i3
+modules-center =
+modules-right = fs-home fs-root wireless-net-lap wireless-net-desk wireless-net-work wired-net-lap wired-net-desk wired-net-work battery battery-work capacity temperature volume memory load clock
+
+tray-position = right
+
+click-left = i3-msg workspace 1:Ϣ
+
+
+
+
+[module/battery-work]
+type = internal/battery
+battery = BAT1
+time-format = %H:%M
+animation-charging-framerate = 5000 ; Framerate in milliseconds
+
+format-charging = <ramp-capacity> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+
+label-charging = %percentage%% %time%
+label-discharging = %percentage%% %time%
+label-full = %percentage%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+time-format = %H:%M
+animation-charging-framerate = 5000 ; Framerate in milliseconds
+
+format-charging = <ramp-capacity> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+
+label-charging = %percentage%% %time%
+label-discharging = %percentage%% %time%
+label-full = %percentage%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+
+
+
+
+[module/clock]
+type = internal/date
+interval = 5.0
+date = " %Y-%m-%d   %l:%M:%S %a"
+
+
+
+[module/i3]
+type = internal/i3
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+
+label-focused = %name%
+label-focused-foreground = #000000
+#label-focused-background = #00c000
+label-focused-background = #88c088
+#label-focused-underline = #00c000
+label-focused-underline = #88c088
+label-focused-padding = 2
+
+label-unfocused = %name%
+label-unfocused-foreground = #999999
+label-unfocused-background = #222222
+label-unfocused-underline = #222222
+label-unfocused-padding = 2
+
+label-visible = %name%
+label-visible-foreground = #444444
+label-visible-background = #88a088
+label-visible-underline = #0000ff
+label-visible-padding = 2
+
+label-urgent = %name%
+label-urgent-foreground = #ffffff
+label-urgent-background = #ff0000
+label-urgent-underline = #ff0000
+label-urgent-padding = 2
+
+
+
+[module/cpu]
+type = internal/cpu
+
+interval = 5
+
+format = <label> <ramp-coreload>
+
+label = CPU
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+
+
+[module/memory]
+type = internal/memory
+interval = 5
+
+; label = RAM %gb_used%/%gb_free%
+label = 
+
+
+format = <label> <bar-used>
+
+; Only applies if <bar-used> is used
+bar-used-indicator =
+bar-used-width = 10
+bar-used-foreground-0 = #44bb44
+bar-used-foreground-1 = #44bb44
+bar-used-foreground-2 = #44bb44
+bar-used-foreground-3 = #44bb44
+bar-used-foreground-4 = #f5a70a
+bar-used-foreground-5 = #f5a70a
+bar-used-foreground-6 = #ff5555
+bar-used-foreground-7 = #ff0000
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+
+
+
+[module/volume]
+type = internal/volume
+click-right = pavucontrol
+
+master-mixer = Master
+
+format-volume = <ramp-volume> <label-volume>
+format-muted = <label-muted>
+
+label-volume = %percentage%%
+
+label-muted =  %percentage%%
+label-muted-foreground = #66
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+
+
+
+
+[module/wired-net-lap]
+type = internal/network
+interface = enp3s31f6
+interval = 5
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected =  %local_ip%
+label-connected-foreground = #00ff00
+
+label-disconnected =  nc
+label-disconnected-foreground = #66ffffff
+
+
+
+[module/wireless-net-lap]
+type = internal/network
+interface = wlp2s0
+interval = 5
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected =  (%signal%% at %essid%) %local_ip%
+label-connected-foreground = #88ff88
+
+label-disconnected =  nc
+label-disconnected-foreground = #66ffffff
+
+
+
+[module/wired-net-desk]
+type = internal/network
+interface = enp4s0
+interval = 5
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected =  %local_ip%
+label-connected-foreground = #00ff00
+
+label-disconnected =  nc
+label-disconnected-foreground = #66ffffff
+
+
+
+[module/wireless-net-desk]
+type = internal/network
+interface = wlp3s0
+interval = 5
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected =  (%signal%% at %essid%) %local_ip%
+label-connected-foreground = #00ff00
+
+label-disconnected =  nc
+label-disconnected-foreground = #66ffffff
+
+
+
+[module/wired-net-work]
+type = internal/network
+interface = enp61s0
+interval = 5
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected =  %local_ip%
+label-connected-foreground = #00ff00
+
+label-disconnected =  nc
+label-disconnected-foreground = #66ffffff
+
+
+
+[module/wireless-net-work]
+type = internal/network
+interface = wlp62s0
+interval = 5
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected =  (%signal%% at %essid%) %local_ip%
+label-connected-foreground = #88ff88
+
+label-disconnected =  nc
+label-disconnected-foreground = #66ffffff
+
+
+
+[module/fs-root]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = /
+
+; Seconds to sleep between updates
+; Default: 30
+interval = 30
+
+; Display fixed precision values
+; Default: false
+; fixed-values = true
+
+format-mounted = <label-mounted>
+format-unmounted = <label-unmounted>
+
+label-mounted =  %free%
+
+label-unmounted = %mountpoint%: not mounted
+label-unmounted-foreground = #55
+
+
+
+[module/fs-home]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = /home
+
+; Seconds to sleep between updates
+; Default: 30
+interval = 30
+
+; Display fixed precision values
+; Default: false
+; fixed-values = true
+
+format-mounted = <label-mounted>
+format-unmounted = <label-unmounted>
+
+label-mounted =  %free%
+
+; label-unmounted = %mountpoint%: not mounted
+label-unmounted =
+label-unmounted-foreground = #55
+
+
+
+[module/load]
+type = custom/script
+
+exec = "echo  $(cat /proc/loadavg | head -c 4)"
+
+tail = true
+
+interval = 5
+
+
+
+[module/capacity]
+type = custom/script
+
+exec = echo  $(echo "$(upower -i /org/freedesktop/UPower/devices/battery_BAT0)" "$(upower -i /org/freedesktop/UPower/devices/battery_BAT1)" | awk '/capacity/ {print $2}' | sed -E 's/(\d*)\..*/\1%/')
+#exec = echo
+
+tail = true
+
+interval = 5
+
+
+
+
+[module/temperature]
+type = internal/temperature
+interval = 5
+
+thermal-zone = 0
+
+warn-temperature = 60
+
+format = <label>
+format-warn = <label-warn>
+label-warn = TEMP %temperature%
+label-warn-foreground = #f00
+
+label =  %temperature%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = #ff
