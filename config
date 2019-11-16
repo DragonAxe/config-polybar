@@ -18,7 +18,7 @@ foreground = #ffffff
 
 modules-left = i3
 modules-center =
-modules-right = fs-home fs-root wireless-net-lap wireless-net-desk wireless-net-work wired-net-lap wired-net-desk wired-net-work battery battery-work capacity temperature volume memory load clock
+modules-right = updates fs-home fs-root wireless-net-lap wireless-net-desk wireless-net-work wired-net-lap wired-net-desk wired-net-work battery battery-work capacity temperature volume memory load clock
 
 tray-position = right
 
@@ -356,6 +356,16 @@ exec = echo  $(echo "$(upower -i /org/freedesktop/UPower/devices/battery_BAT0
 tail = true
 
 interval = 5
+
+
+
+
+[module/updates]
+type = custom/script
+
+exec = ~/.config/polybar/check-updates.sh
+
+interval = 1800
 
 
 
