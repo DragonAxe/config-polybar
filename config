@@ -18,12 +18,18 @@ foreground = #ffffff
 
 modules-left = i3
 modules-center =
-modules-right = updates fs-home fs-root wireless-net-lap wireless-net-desk wireless-net-work wired-net-lap wired-net-desk wired-net-work battery battery-work capacity temperature volume memory load clock
+modules-right = updates fs-home fs-root wireless-net-lap wireless-net-desk wireless-net-work wired-net-lap wired-net-desk wired-net-work battery battery-work capacity temperature volume memory load clock notifications
 
 tray-position = ${env:TRAY_POS}
 
 click-left = i3-msg workspace 1:Ϣ
 
+
+
+[module/notifications]
+type = custom/script
+exec = echo ""
+click-left = ~/.config/polybar/notification-center-launcher.sh
 
 
 
